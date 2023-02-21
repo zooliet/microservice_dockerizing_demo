@@ -16,6 +16,8 @@ services:
     ports:
       - "${DOCKER_WEB_PORT_FORWARD:-127.0.0.1:3000}:${PORT:-3000}"
     profiles: ["rails"]
+    volumes:
+      - "${DOCKER_WEB_VOLUME:-./public:/app/public}"
 
   postgres:
     image: "postgres:15.1-alpine" # or "postgres:15.1-bullseye"
