@@ -1,6 +1,13 @@
 .env*
 !.env.example
+
 /public/*
+!/public/.keep
+
 /storage/*
+!/storage/.keep
+
 /log/*
 /tmp/*
+!/log/.keep
+!/tmp/.keep
