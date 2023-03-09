@@ -58,6 +58,21 @@ services:
       - "${DOCKER_CABLE_PORT_FORWARD:-127.0.0.1:28080}:28080"
     profiles: ["cable"]
 
+  mkdocs:
+    build:
+      context: "./mkdocs"
+    depends_on:
+      - "rails"
+    env_file:
+      - ".env"
+    restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
+    stop_grace_period: "3s"
+    tty: true
+    profiles: ["mkdocs"]
+    command: "sleep 3"
+    volumes:
+      - "./public/blogs:/mkdocs/blogs"
+
 volumes:
   postgres-data: {}
   redis-data: {}
